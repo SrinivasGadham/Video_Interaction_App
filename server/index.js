@@ -16,7 +16,7 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use("/users", userRoutes);
 app.use("/rooms", roomRoutes);
-app.get("/getUsers",getUsers)
+// app.get("/getUsers",getUsers)
 app.get("/", (req, res) => {
   res.send("Hello to VIA API");
 });
