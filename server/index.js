@@ -6,6 +6,7 @@ import { Server } from "socket.io";
 import { addUser, removeUser, getUser } from "./utils/users.js";
 import userRoutes from "./routes/user.js";
 import roomRoutes from "./routes/room.js";
+import { getUsers } from "./controllers/user.js";
 
 const app = express();
 dotenv.config();
@@ -13,10 +14,9 @@ dotenv.config();
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors({ origin: process.env.FRONTEND_URL }));
-
 app.use("/users", userRoutes);
 app.use("/rooms", roomRoutes);
-
+app.get("/getUsers",getUsers)
 app.get("/", (req, res) => {
   res.send("Hello to VIA API");
 });
