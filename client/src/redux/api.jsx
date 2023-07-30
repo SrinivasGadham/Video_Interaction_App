@@ -23,7 +23,7 @@ export const api = createApi({
 
     getUsers: builder.query({
       query: () => ({
-        url: "users/get-users",
+        url: "users/get-users",  
       }),
     }),
 
@@ -82,7 +82,8 @@ export const api = createApi({
     removeUserFromRoom: builder.mutation({
       query: (data) => ({
         url: `rooms/${data.userId}/${data.roomId}/remove-user`,
-        method: "PATCH",
+        // method: "PATCH",
+        method: "PUT",
         body: { newUserId: data.newUserId },
       }),
       invalidatesTags: (result, error, arg) => [{ type: "Room", id: arg.id }],
@@ -91,7 +92,8 @@ export const api = createApi({
     postMessage: builder.mutation({
       query: (data) => ({
         url: `rooms/${data.userId}/${data.roomId}/message`,
-        method: "POST",
+        // method: "POST",
+        method: "PUT",
         body: { message: data.message },
       }),
       invalidatesTags: (result, error, arg) => [{ type: "Room", id: arg.id }],

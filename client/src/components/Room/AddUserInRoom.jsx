@@ -7,7 +7,7 @@ import {
   MenuItem,
   MenuList,
 } from "@mui/material";
-import { useAddUserInRoomMutation, useGetUsersQuery } from "../../redux/api";
+import { useAddUserInRoomMutation, useGetRoomsQuery, useGetUsersQuery } from "../../redux/api";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -19,11 +19,13 @@ const AddUserInRoom = ({ roomId, usersInRoom }) => {
     addUserInRoom,
     { isLoading, isSuccess: addUserSuccess, isError, error },
   ] = useAddUserInRoomMutation();
+  // const { refetch } = useGetRoomsQuery();
 
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleClick = async (newUser) => {
     await addUserInRoom({ userId: user._id, roomId, newUserId: newUser._id });
+    // refetch();
   };
 
   useEffect(() => {
