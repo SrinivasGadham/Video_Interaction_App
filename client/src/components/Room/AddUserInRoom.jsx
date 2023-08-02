@@ -31,7 +31,7 @@ const AddUserInRoom = ({ roomId, usersInRoom }) => {
   useEffect(() => {
     if (addUserSuccess) {
       toast.success("User Added");
-      window.location.reload(false);
+      // window.location.reload(false);
     }
     if (isError) {
       toast.error(error.message);

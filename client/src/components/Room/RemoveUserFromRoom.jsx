@@ -26,7 +26,7 @@ const RemoveUserFromRoom = ({ roomId, usersInRoom }) => {
   useEffect(() => {
     if (isSuccess) {
       toast.success("User Removed");
-      window.location.reload(false);
+      // window.location.reload(false);
     }
     if (isError) {
       toast.error(error.message);
